@@ -1,45 +1,99 @@
+/* WanGP Modern Dark Theme
+   A sleek, professional dark interface for AI video generation
+   ================================================================ */
+
 :root {
     --wangp-ui-scale: 0.9;
+    
+    /* Core color palette */
+    --wangp-bg-primary: #0a0f14;
+    --wangp-bg-secondary: #0f1419;
+    --wangp-bg-tertiary: #141b22;
+    --wangp-bg-card: #1a232d;
+    --wangp-bg-elevated: #1f2937;
+    --wangp-bg-hover: #252f3d;
+    
+    /* Accent colors */
+    --wangp-accent: #06b6d4;
+    --wangp-accent-hover: #22d3ee;
+    --wangp-accent-subtle: rgba(6, 182, 212, 0.15);
+    --wangp-accent-glow: rgba(6, 182, 212, 0.4);
+    
+    /* Secondary accent */
+    --wangp-secondary: #8b5cf6;
+    --wangp-secondary-subtle: rgba(139, 92, 246, 0.15);
+    
+    /* Text colors */
+    --wangp-text-primary: #f1f5f9;
+    --wangp-text-secondary: #94a3b8;
+    --wangp-text-muted: #64748b;
+    --wangp-text-accent: #06b6d4;
+    
+    /* Border colors */
+    --wangp-border: rgba(148, 163, 184, 0.12);
+    --wangp-border-subtle: rgba(148, 163, 184, 0.08);
+    --wangp-border-accent: rgba(6, 182, 212, 0.3);
+    
+    /* Status colors */
+    --wangp-success: #10b981;
+    --wangp-warning: #f59e0b;
+    --wangp-error: #ef4444;
+    --wangp-info: #3b82f6;
+    
+    /* Shadows */
+    --wangp-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --wangp-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --wangp-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+    --wangp-shadow-glow: 0 0 20px var(--wangp-accent-glow);
 }
+
+/* ================================================================
+   Base Gradio Overrides
+   ================================================================ */
 
 gradio-app {
     width: 100%;
+    background: var(--wangp-bg-primary) !important;
 }
 
-.postprocess div,
-.postprocess span,
-.postprocess label,
-.postprocess input,
-.postprocess select,
-.postprocess textarea {
-    font-size: calc(12px * var(--wangp-ui-scale)) !important;
-    padding: 0px !important;
-    border:  5px !important;
-    border-radius: 0px !important;
-    --form-gap-width: 0px !important;
-    box-shadow: none !important;
-    --layout-gap: 0px !important;
-}
-.postprocess span {margin-top:4px;margin-bottom:4px}
-#model_list, #family_list, #model_base_types_list {
-background-color:black;
-padding:1px}
-
-#model_list,#model_base_types_list { padding-left:0px}
-
-#model_list input, #family_list input, #model_base_types_list input {
-font-size: calc(25px * var(--wangp-ui-scale))}
-
-#family_list div div {
-border-radius: 4px 0px 0px 4px;
+.gradio-container {
+    background: var(--wangp-bg-primary) !important;
+    max-width: 100% !important;
 }
 
-#model_list div div {
-border-radius: 0px 4px 4px 0px;
+.dark {
+    --background-fill-primary: var(--wangp-bg-primary) !important;
+    --background-fill-secondary: var(--wangp-bg-secondary) !important;
+    --block-background-fill: var(--wangp-bg-card) !important;
 }
 
-#model_base_types_list div div {
-border-radius: 0px 0px 0px 0px;
+/* Force dark background on body */
+body {
+    background: var(--wangp-bg-primary) !important;
+    color: var(--wangp-text-primary) !important;
+}
+
+/* Main container */
+.main, main, #main {
+    background: var(--wangp-bg-primary) !important;
+}
+
+/* ================================================================
+   Header Styling
+   ================================================================ */
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--wangp-text-primary) !important;
+    font-weight: 600 !important;
+}
+
+/* Main title styling */
+h1 {
+    background: linear-gradient(135deg, var(--wangp-accent) 0%, var(--wangp-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px var(--wangp-accent-glow);
 }
 
 .title-with-lines {
@@ -47,234 +101,414 @@ border-radius: 0px 0px 0px 0px;
     align-items: center;
     margin: calc(25px * var(--wangp-ui-scale)) 0;
 }
-.line {
+
+.title-with-lines .line {
     flex-grow: 1;
     height: 1px;
-    background-color: #333;
-}
-h2 {
-    margin: 0 calc(20px * var(--wangp-ui-scale));
-    white-space: nowrap;
-}
-#edit-tab-content {
-    max-width: 960px;
-    margin-left: auto;
-    margin-right: auto;
-}
-#edit_tab_apply_button {
-    background-color: #4535ec !important;
-    color: white !important;
-    transition: background-color 0.2s ease-in-out;
-}
-#edit_tab_apply_button:hover {
-    background-color: #3323d8 !important;
-}
-#edit_tab_cancel_button {
-    background-color: #7e73f2 !important;
-    color: white !important;
-    transition: background-color 0.2s ease-in-out;
-}
-#edit_tab_cancel_button:hover {
-    background-color: #5c50e2 !important;
-}
-#queue_html_container .pastel-row {
-    background-color: hsl(var(--item-hue, 0), 80%, 92%);
-}
-#queue_html_container .alternating-grey-row.even-row {
-    background-color: #F8FAFC; /* Light mode grey */
-}
-@media (prefers-color-scheme: dark) {
-    #queue_html_container tr:hover td {
-         background-color: rgba(255, 255, 255, 0.1) !important;
-    }
-    #queue_html_container .pastel-row {
-        background-color: hsl(var(--item-hue, 0), 35%, 25%);
-    }
-    #queue_html_container .alternating-grey-row.even-row {
-        background-color: #2a3748; /* Dark mode grey */
-    }
-    #queue_html_container .alternating-grey-row {
-        background-color: transparent;
-    }
-}
-#queue_html_container table {
-    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
-    width: 100%;
-    border-collapse: collapse;
-    font-size: calc(14px * var(--wangp-ui-scale));
-    table-layout: fixed;
-}
-#queue_html_container th {
-    text-align: left;
-    padding: calc(10px * var(--wangp-ui-scale)) calc(8px * var(--wangp-ui-scale));
-    border-bottom: 2px solid #4a5568;
-    font-weight: bold;
-    font-size: calc(11px * var(--wangp-ui-scale));
-    text-transform: uppercase;
-    color: #a0aec0;
-    white-space: nowrap;
-}
-#queue_html_container td {
-    padding: calc(8px * var(--wangp-ui-scale));
-    border-bottom: 1px solid #2d3748;
-    vertical-align: middle;
-}
-#queue_html_container tr:hover td {
-    background-color: rgba(255, 255, 255, 0.6);
-}
-#queue_html_container .prompt-cell {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-#queue_html_container .action-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1.3em;
-    padding: 0;
-    color: #718096;
-    transition: color 0.2s;
-    line-height: 1;
-}
-#queue_html_container .action-button:hover {
-    color: #e2e8f0;
-}
-#queue_html_container .center-align {
-    text-align: center;
-}
-#queue_html_container .text-left {
-    text-align: left;
-}
-#queue_html_container .hover-image img {
-    max-width: calc(50px * var(--wangp-ui-scale));
-    max-height: calc(50px * var(--wangp-ui-scale));
-    object-fit: contain;
-    display: block;
-    margin: auto;
-}
-#queue_html_container .draggable-row {
-    cursor: grab;
-}
-#queue_html_container tr.dragging {
-    opacity: 0.5;
-    background: #2d3748;
-}
-#queue_html_container tr.drag-over-top {
-    border-top: 6px solid #4299e1;
-}
-#queue_html_container tr.drag-over-bottom {
-    border-bottom: 6px solid #4299e1;
-}
-#queue_html_container .action-button svg {
-    width: calc(20px * var(--wangp-ui-scale));
-    height: calc(20px * var(--wangp-ui-scale));
+    background: linear-gradient(90deg, transparent, var(--wangp-border), transparent);
 }
 
-#queue_html_container .drag-handle svg {
-    width: calc(20px * var(--wangp-ui-scale));
-    height: calc(20px * var(--wangp-ui-scale));
-}
-#queue_html_container .action-button:hover svg {
-    fill: #e2e8f0;
-}
-#image-modal-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.85);
-    z-index: 1000;
-    cursor: pointer;
-}
-#image-modal-container .modal-flex-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    padding: 2vh;
-    box-sizing: border-box;
-}
-#image-modal-container .modal-content-wrapper {
-    position: relative;
-    background: #1f2937;
-    padding: 0;
-    border-radius: 8px;
-    cursor: default;
-    display: flex;
-    flex-direction: column;
-    max-width: 95vw;
-    max-height: 95vh;
-    overflow: hidden;
-}
-#image-modal-container .modal-close-btn {
-    position: absolute;
-    top: calc(10px * var(--wangp-ui-scale));
-    right: calc(10px * var(--wangp-ui-scale));
-    width: calc(40px * var(--wangp-ui-scale));
-    height: calc(40px * var(--wangp-ui-scale));
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-    color: #fff;
-    font-size: calc(1.8rem * var(--wangp-ui-scale));
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    line-height: 1;
-    z-index: 1002;
-    transition: background-color 0.2s, transform 0.2s;
-    text-shadow: 0 0 5px rgba(0,0,0,0.5);
-}
-#image-modal-container .modal-close-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-    transform: scale(1.1);
-}
-#image-modal-container .modal-label {
-    position: absolute;
-    top: calc(10px * var(--wangp-ui-scale));
-    left: calc(15px * var(--wangp-ui-scale));
-    background: rgba(0,0,0,0.7);
-    color: white;
-    padding: calc(5px * var(--wangp-ui-scale)) calc(10px * var(--wangp-ui-scale));
+.title-with-lines h2 {
+    margin: 0 calc(20px * var(--wangp-ui-scale));
+    white-space: nowrap;
+    color: var(--wangp-text-secondary) !important;
     font-size: calc(14px * var(--wangp-ui-scale));
-    border-radius: 4px;
-    z-index: 1001;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
 }
-#image-modal-container .modal-image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+
+/* ================================================================
+   Blocks and Cards
+   ================================================================ */
+
+.block, .gr-block {
+    background: var(--wangp-bg-card) !important;
+    border: 1px solid var(--wangp-border) !important;
+    border-radius: 12px !important;
+    box-shadow: var(--wangp-shadow-sm) !important;
 }
+
+.gr-box {
+    background: var(--wangp-bg-secondary) !important;
+    border: 1px solid var(--wangp-border) !important;
+    border-radius: 8px !important;
+}
+
+.gr-panel {
+    background: var(--wangp-bg-card) !important;
+    border: 1px solid var(--wangp-border) !important;
+}
+
+/* ================================================================
+   Tabs
+   ================================================================ */
+
+.tabs {
+    background: transparent !important;
+}
+
+.tab-nav {
+    background: var(--wangp-bg-secondary) !important;
+    border-radius: 12px !important;
+    padding: 4px !important;
+    border: 1px solid var(--wangp-border) !important;
+    gap: 4px !important;
+}
+
+.tab-nav button {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 8px !important;
+    color: var(--wangp-text-secondary) !important;
+    font-weight: 500 !important;
+    padding: 10px 18px !important;
+    transition: all 0.2s ease !important;
+}
+
+.tab-nav button:hover {
+    background: var(--wangp-bg-hover) !important;
+    color: var(--wangp-text-primary) !important;
+}
+
+.tab-nav button.selected {
+    background: var(--wangp-accent) !important;
+    color: var(--wangp-bg-primary) !important;
+    font-weight: 600 !important;
+    box-shadow: var(--wangp-shadow-glow) !important;
+}
+
+.tabitem {
+    padding-top: 16px !important;
+    background: transparent !important;
+}
+
+/* ================================================================
+   Form Elements
+   ================================================================ */
+
+/* Text inputs and textareas */
+input[type="text"],
+input[type="number"],
+input[type="password"],
+textarea,
+.gr-text-input,
+.gr-textarea {
+    background: var(--wangp-bg-secondary) !important;
+    border: 1px solid var(--wangp-border) !important;
+    border-radius: 8px !important;
+    color: var(--wangp-text-primary) !important;
+    padding: 10px 14px !important;
+    font-size: calc(14px * var(--wangp-ui-scale)) !important;
+    transition: all 0.2s ease !important;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+.gr-text-input:focus,
+.gr-textarea:focus {
+    border-color: var(--wangp-accent) !important;
+    box-shadow: 0 0 0 3px var(--wangp-accent-subtle), var(--wangp-shadow-glow) !important;
+    outline: none !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--wangp-text-muted) !important;
+}
+
+/* Labels */
+label, .gr-label {
+    color: var(--wangp-text-secondary) !important;
+    font-size: calc(13px * var(--wangp-ui-scale)) !important;
+    font-weight: 500 !important;
+    margin-bottom: 6px !important;
+}
+
+/* ================================================================
+   Buttons
+   ================================================================ */
+
+button, .gr-button {
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    padding: 10px 20px !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+}
+
+/* Primary buttons */
+button.primary, .gr-button.primary,
+button[variant="primary"], .gr-button[variant="primary"] {
+    background: linear-gradient(135deg, var(--wangp-accent) 0%, #0891b2 100%) !important;
+    border: none !important;
+    color: var(--wangp-bg-primary) !important;
+    box-shadow: var(--wangp-shadow-md), 0 0 15px var(--wangp-accent-glow) !important;
+}
+
+button.primary:hover, .gr-button.primary:hover,
+button[variant="primary"]:hover, .gr-button[variant="primary"]:hover {
+    background: linear-gradient(135deg, var(--wangp-accent-hover) 0%, var(--wangp-accent) 100%) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: var(--wangp-shadow-lg), 0 0 25px var(--wangp-accent-glow) !important;
+}
+
+/* Secondary buttons */
+button.secondary, .gr-button.secondary,
+button[variant="secondary"], .gr-button[variant="secondary"] {
+    background: var(--wangp-bg-elevated) !important;
+    border: 1px solid var(--wangp-border) !important;
+    color: var(--wangp-text-primary) !important;
+}
+
+button.secondary:hover, .gr-button.secondary:hover,
+button[variant="secondary"]:hover, .gr-button[variant="secondary"]:hover {
+    background: var(--wangp-bg-hover) !important;
+    border-color: var(--wangp-accent) !important;
+}
+
+/* Stop/Cancel buttons */
+button.stop, .gr-button.stop,
+button[variant="stop"], .gr-button[variant="stop"] {
+    background: linear-gradient(135deg, var(--wangp-error) 0%, #dc2626 100%) !important;
+    border: none !important;
+    color: white !important;
+}
+
+/* Generate button special styling */
+#generate_btn, .generate-btn, button[id*="generate"] {
+    background: linear-gradient(135deg, var(--wangp-accent) 0%, var(--wangp-secondary) 100%) !important;
+    border: none !important;
+    color: white !important;
+    font-size: calc(16px * var(--wangp-ui-scale)) !important;
+    padding: 14px 28px !important;
+    box-shadow: var(--wangp-shadow-lg), 0 0 30px var(--wangp-accent-glow) !important;
+}
+
+#generate_btn:hover, .generate-btn:hover, button[id*="generate"]:hover {
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow: var(--wangp-shadow-lg), 0 0 40px var(--wangp-accent-glow) !important;
+}
+
+/* Edit tab buttons */
+#edit_tab_apply_button {
+    background: linear-gradient(135deg, var(--wangp-accent) 0%, #0891b2 100%) !important;
+    color: white !important;
+    border: none !important;
+}
+
+#edit_tab_apply_button:hover {
+    background: linear-gradient(135deg, var(--wangp-accent-hover) 0%, var(--wangp-accent) 100%) !important;
+}
+
+#edit_tab_cancel_button {
+    background: var(--wangp-bg-elevated) !important;
+    color: var(--wangp-text-primary) !important;
+    border: 1px solid var(--wangp-border) !important;
+}
+
+#edit_tab_cancel_button:hover {
+    background: var(--wangp-bg-hover) !important;
+    border-color: var(--wangp-accent) !important;
+}
+
+.btn_centered {
+    margin-top: calc(10px * var(--wangp-ui-scale));
+    text-wrap-mode: nowrap;
+}
+
+/* ================================================================
+   Sliders
+   ================================================================ */
+
+input[type="range"] {
+    -webkit-appearance: none !important;
+    background: var(--wangp-bg-secondary) !important;
+    border-radius: 4px !important;
+    height: 6px !important;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    width: 18px !important;
+    height: 18px !important;
+    background: var(--wangp-accent) !important;
+    border-radius: 50% !important;
+    cursor: pointer !important;
+    box-shadow: 0 0 10px var(--wangp-accent-glow) !important;
+    transition: all 0.2s ease !important;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.1) !important;
+    box-shadow: 0 0 15px var(--wangp-accent-glow) !important;
+}
+
+/* ================================================================
+   Checkboxes
+   ================================================================ */
+
+input[type="checkbox"] {
+    -webkit-appearance: none !important;
+    width: 18px !important;
+    height: 18px !important;
+    background: var(--wangp-bg-secondary) !important;
+    border: 2px solid var(--wangp-border) !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+input[type="checkbox"]:checked {
+    background: var(--wangp-accent) !important;
+    border-color: var(--wangp-accent) !important;
+}
+
+input[type="checkbox"]:checked::after {
+    content: "✓" !important;
+    display: block !important;
+    text-align: center !important;
+    color: var(--wangp-bg-primary) !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
+    line-height: 14px !important;
+}
+
+.cbx_centered label {
+    margin-top: calc(8px * var(--wangp-ui-scale));
+    text-wrap-mode: nowrap;
+}
+
+.cbx_bottom label {
+    padding-top: calc(48px * var(--wangp-ui-scale));
+    text-wrap-mode: nowrap;
+}
+
+/* ================================================================
+   Dropdowns / Select
+   ================================================================ */
+
+select, .gr-dropdown {
+    background: var(--wangp-bg-secondary) !important;
+    border: 1px solid var(--wangp-border) !important;
+    border-radius: 8px !important;
+    color: var(--wangp-text-primary) !important;
+    padding: 10px 14px !important;
+    cursor: pointer !important;
+}
+
+select:focus, .gr-dropdown:focus {
+    border-color: var(--wangp-accent) !important;
+    box-shadow: 0 0 0 3px var(--wangp-accent-subtle) !important;
+    outline: none !important;
+}
+
+/* Dropdown options */
+.gr-dropdown-container ul {
+    background: var(--wangp-bg-card) !important;
+    border: 1px solid var(--wangp-border) !important;
+    border-radius: 8px !important;
+    box-shadow: var(--wangp-shadow-lg) !important;
+}
+
+.gr-dropdown-container li {
+    color: var(--wangp-text-primary) !important;
+    padding: 10px 14px !important;
+}
+
+.gr-dropdown-container li:hover {
+    background: var(--wangp-accent-subtle) !important;
+}
+
+/* ================================================================
+   Model Selection (Radio/Checkbox Groups)
+   ================================================================ */
+
+#model_list, #family_list, #model_base_types_list {
+    background: var(--wangp-bg-secondary) !important;
+    padding: 4px !important;
+    border-radius: 10px !important;
+    border: 1px solid var(--wangp-border) !important;
+}
+
+#model_list input, #family_list input, #model_base_types_list input {
+    font-size: calc(18px * var(--wangp-ui-scale)) !important;
+    color: var(--wangp-text-primary) !important;
+}
+
+#family_list div div {
+    border-radius: 8px 0px 0px 8px !important;
+    background: var(--wangp-bg-tertiary) !important;
+}
+
+#model_list div div {
+    border-radius: 0px 8px 8px 0px !important;
+    background: var(--wangp-bg-tertiary) !important;
+}
+
+#model_base_types_list div div {
+    border-radius: 0px !important;
+    background: var(--wangp-bg-tertiary) !important;
+}
+
+/* Radio buttons in model selection */
+.gr-radio-row, .gr-checkbox-row {
+    background: var(--wangp-bg-tertiary) !important;
+    border: 1px solid var(--wangp-border) !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+    margin: 2px !important;
+    transition: all 0.2s ease !important;
+}
+
+.gr-radio-row:hover, .gr-checkbox-row:hover {
+    background: var(--wangp-bg-hover) !important;
+    border-color: var(--wangp-accent) !important;
+}
+
+.gr-radio-row.selected, .gr-checkbox-row.selected,
+.gr-radio-row:has(input:checked), .gr-checkbox-row:has(input:checked) {
+    background: var(--wangp-accent-subtle) !important;
+    border-color: var(--wangp-accent) !important;
+}
+
+/* ================================================================
+   Progress Bars
+   ================================================================ */
+
 .progress-container-custom {
     width: 100%;
-    background-color: #e9ecef;
-    border-radius: 0.375rem;
+    background: var(--wangp-bg-secondary) !important;
+    border-radius: 10px !important;
     overflow: hidden;
-    height: calc(25px * var(--wangp-ui-scale));
+    height: calc(28px * var(--wangp-ui-scale));
     position: relative;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border: 1px solid var(--wangp-border) !important;
 }
+
 .progress-bar-custom {
     height: 100%;
-    background-color: #0d6efd;
+    background: linear-gradient(90deg, var(--wangp-accent) 0%, var(--wangp-secondary) 100%) !important;
     transition: width 0.3s ease-in-out;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: white !important;
     font-size: 0.9em;
     font-weight: bold;
     white-space: nowrap;
     overflow: hidden;
+    box-shadow: 0 0 15px var(--wangp-accent-glow) !important;
 }
+
 .progress-bar-custom.idle {
-    background-color: #6c757d;
+    background: var(--wangp-bg-elevated) !important;
+    box-shadow: none !important;
 }
+
 .progress-bar-text {
     position: absolute;
     top: 0;
@@ -284,105 +518,468 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    mix-blend-mode: difference;
+    color: white !important;
     font-size: 0.9em;
     font-weight: bold;
     white-space: nowrap;
     z-index: 2;
     pointer-events: none;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5) !important;
 }
+
+/* Gradio progress bar */
+.gr-progress-bar {
+    background: var(--wangp-bg-secondary) !important;
+    border-radius: 8px !important;
+}
+
+.gr-progress-bar-fill {
+    background: linear-gradient(90deg, var(--wangp-accent) 0%, var(--wangp-secondary) 100%) !important;
+    box-shadow: 0 0 15px var(--wangp-accent-glow) !important;
+}
+
+/* ================================================================
+   Queue Table
+   ================================================================ */
+
+#queue_html_container table {
+    font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: calc(14px * var(--wangp-ui-scale));
+    table-layout: fixed;
+    background: var(--wangp-bg-card) !important;
+    border-radius: 12px !important;
+    overflow: hidden;
+}
+
+#queue_html_container th {
+    text-align: left;
+    padding: calc(14px * var(--wangp-ui-scale)) calc(12px * var(--wangp-ui-scale));
+    border-bottom: 2px solid var(--wangp-border);
+    font-weight: 600;
+    font-size: calc(11px * var(--wangp-ui-scale));
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--wangp-text-muted) !important;
+    white-space: nowrap;
+    background: var(--wangp-bg-secondary) !important;
+}
+
+#queue_html_container td {
+    padding: calc(12px * var(--wangp-ui-scale));
+    border-bottom: 1px solid var(--wangp-border-subtle);
+    vertical-align: middle;
+    color: var(--wangp-text-primary) !important;
+}
+
+#queue_html_container tr:hover td {
+    background: var(--wangp-accent-subtle) !important;
+}
+
+#queue_html_container .pastel-row {
+    background: var(--wangp-accent-subtle) !important;
+}
+
+#queue_html_container .alternating-grey-row.even-row {
+    background: var(--wangp-bg-tertiary) !important;
+}
+
+#queue_html_container .alternating-grey-row {
+    background: transparent !important;
+}
+
+#queue_html_container .prompt-cell {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--wangp-text-secondary) !important;
+}
+
+#queue_html_container .action-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.3em;
+    padding: 4px;
+    color: var(--wangp-text-muted) !important;
+    transition: all 0.2s ease;
+    line-height: 1;
+    border-radius: 6px;
+}
+
+#queue_html_container .action-button:hover {
+    color: var(--wangp-accent) !important;
+    background: var(--wangp-accent-subtle) !important;
+}
+
+#queue_html_container .center-align {
+    text-align: center;
+}
+
+#queue_html_container .text-left {
+    text-align: left;
+}
+
+#queue_html_container .hover-image img {
+    max-width: calc(50px * var(--wangp-ui-scale));
+    max-height: calc(50px * var(--wangp-ui-scale));
+    object-fit: contain;
+    display: block;
+    margin: auto;
+    border-radius: 6px !important;
+    border: 1px solid var(--wangp-border) !important;
+}
+
+#queue_html_container .draggable-row {
+    cursor: grab;
+}
+
+#queue_html_container tr.dragging {
+    opacity: 0.5;
+    background: var(--wangp-bg-hover) !important;
+}
+
+#queue_html_container tr.drag-over-top {
+    border-top: 3px solid var(--wangp-accent) !important;
+}
+
+#queue_html_container tr.drag-over-bottom {
+    border-bottom: 3px solid var(--wangp-accent) !important;
+}
+
+#queue_html_container .action-button svg {
+    width: calc(20px * var(--wangp-ui-scale));
+    height: calc(20px * var(--wangp-ui-scale));
+}
+
+#queue_html_container .drag-handle svg {
+    width: calc(20px * var(--wangp-ui-scale));
+    height: calc(20px * var(--wangp-ui-scale));
+}
+
+#queue_html_container .action-button:hover svg {
+    fill: var(--wangp-accent) !important;
+}
+
+/* ================================================================
+   Image Modal
+   ================================================================ */
+
+#image-modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.92);
+    z-index: 1000;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+}
+
+#image-modal-container .modal-flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 2vh;
+    box-sizing: border-box;
+}
+
+#image-modal-container .modal-content-wrapper {
+    position: relative;
+    background: var(--wangp-bg-card) !important;
+    padding: 0;
+    border-radius: 16px !important;
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+    max-width: 95vw;
+    max-height: 95vh;
+    overflow: hidden;
+    border: 1px solid var(--wangp-border) !important;
+    box-shadow: var(--wangp-shadow-lg), 0 0 40px rgba(0,0,0,0.5) !important;
+}
+
+#image-modal-container .modal-close-btn {
+    position: absolute;
+    top: calc(12px * var(--wangp-ui-scale));
+    right: calc(12px * var(--wangp-ui-scale));
+    width: calc(40px * var(--wangp-ui-scale));
+    height: calc(40px * var(--wangp-ui-scale));
+    background: var(--wangp-bg-elevated) !important;
+    border-radius: 50%;
+    color: var(--wangp-text-primary) !important;
+    font-size: calc(1.6rem * var(--wangp-ui-scale));
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 1002;
+    transition: all 0.2s ease;
+    border: 1px solid var(--wangp-border) !important;
+}
+
+#image-modal-container .modal-close-btn:hover {
+    background: var(--wangp-accent) !important;
+    color: var(--wangp-bg-primary) !important;
+    transform: scale(1.1);
+}
+
+#image-modal-container .modal-label {
+    position: absolute;
+    top: calc(12px * var(--wangp-ui-scale));
+    left: calc(16px * var(--wangp-ui-scale));
+    background: var(--wangp-bg-elevated) !important;
+    color: var(--wangp-text-primary) !important;
+    padding: calc(6px * var(--wangp-ui-scale)) calc(12px * var(--wangp-ui-scale));
+    font-size: calc(13px * var(--wangp-ui-scale));
+    border-radius: 6px;
+    z-index: 1001;
+    border: 1px solid var(--wangp-border) !important;
+}
+
+#image-modal-container .modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* ================================================================
+   Media Upload / Image Components
+   ================================================================ */
+
+.gr-image, .gr-video, .gr-file {
+    background: var(--wangp-bg-secondary) !important;
+    border: 2px dashed var(--wangp-border) !important;
+    border-radius: 12px !important;
+    transition: all 0.2s ease !important;
+}
+
+.gr-image:hover, .gr-video:hover, .gr-file:hover {
+    border-color: var(--wangp-accent) !important;
+    background: var(--wangp-accent-subtle) !important;
+}
+
+.gr-image img, .gr-video video {
+    border-radius: 8px !important;
+}
+
+#video_input .video-container .container {
+    flex-direction: row !important;
+    display: flex !important;
+    background: var(--wangp-bg-secondary) !important;
+}
+
+#video_input .video-container .container .controls {
+    overflow: visible !important;
+}
+
+/* ================================================================
+   Accordion
+   ================================================================ */
+
+.gr-accordion {
+    background: var(--wangp-bg-card) !important;
+    border: 1px solid var(--wangp-border) !important;
+    border-radius: 12px !important;
+    overflow: hidden;
+}
+
+.gr-accordion-header {
+    background: var(--wangp-bg-secondary) !important;
+    padding: 14px 18px !important;
+    cursor: pointer;
+    transition: all 0.2s ease !important;
+}
+
+.gr-accordion-header:hover {
+    background: var(--wangp-bg-hover) !important;
+}
+
+.gr-accordion-header span {
+    color: var(--wangp-text-primary) !important;
+    font-weight: 500 !important;
+}
+
+/* ================================================================
+   Tooltips
+   ================================================================ */
 
 .hover-image {
-cursor: pointer;
-position: relative;
-display: inline-block; /* Important for positioning */
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
 }
 
-.hover-image .tooltip {
-visibility: hidden;
-opacity: 0;
-position: absolute;
-top: 100%;
-left: 50%;
-transform: translateX(-50%);
-background-color: rgba(0, 0, 0, 0.8);
-color: white;
- padding: calc(4px * var(--wangp-ui-scale)) calc(6px * var(--wangp-ui-scale));
-border-radius: 2px;
-font-size: calc(14px * var(--wangp-ui-scale));
-white-space: nowrap;
-pointer-events: none;
-z-index: 9999;
-transition: visibility 0s linear 1s, opacity 0.3s linear 1s; /* Delay both properties */
-}
-div.compact_tab , span.compact_tab
-{ padding: 0px !important;
-}
+.hover-image .tooltip,
 .hover-image .tooltip2 {
     visibility: hidden;
     opacity: 0;
     position: absolute;
-    top: 50%; /* Center vertically with the image */
-    left: 0; /* Position to the left of the image */
-    transform: translateY(-50%); /* Center vertically */
-    margin-left: -10px; /* Small gap to the left of image */
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
+    background: var(--wangp-bg-elevated) !important;
+    color: var(--wangp-text-primary) !important;
     padding: calc(8px * var(--wangp-ui-scale)) calc(12px * var(--wangp-ui-scale));
-    border-radius: 4px;
-    font-size: calc(14px * var(--wangp-ui-scale));
+    border-radius: 8px;
+    font-size: calc(13px * var(--wangp-ui-scale));
     white-space: nowrap;
     pointer-events: none;
     z-index: 9999;
-    transition: visibility 0s linear 1s, opacity 0.3s linear 1s;
+    transition: visibility 0s linear 0.5s, opacity 0.2s ease 0.5s;
+    border: 1px solid var(--wangp-border) !important;
+    box-shadow: var(--wangp-shadow-md) !important;
 }
 
-.hover-image:hover .tooltip, .hover-image:hover .tooltip2 {
-visibility: visible;
-opacity: 1;
-transition: visibility 0s linear 1s, opacity 0.3s linear 1s; /* 1s delay before showing */
+.hover-image .tooltip {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 8px;
 }
-.btn_centered {margin-top: calc(10px * var(--wangp-ui-scale)); text-wrap-mode: nowrap;}
-.cbx_centered label {margin-top: calc(8px * var(--wangp-ui-scale)); text-wrap-mode: nowrap;}
-.cbx_bottom label {padding-top: calc(48px * var(--wangp-ui-scale)); text-wrap-mode: nowrap;}
-.copy-swap { display:block; max-width:100%;
+
+.hover-image .tooltip2 {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    margin-left: -10px;
 }
+
+.hover-image:hover .tooltip,
+.hover-image:hover .tooltip2 {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s linear 0.5s, opacity 0.2s ease 0.5s;
+}
+
+/* ================================================================
+   Rules / Refinement Components
+   ================================================================ */
+
+.rule-row {
+    margin-bottom: calc(8px * var(--wangp-ui-scale));
+    align-items: center !important;
+    display: flex;
+    gap: calc(8px * var(--wangp-ui-scale));
+}
+
+.rule-card {
+    background: var(--wangp-bg-secondary) !important;
+    padding: calc(12px * var(--wangp-ui-scale)) calc(16px * var(--wangp-ui-scale));
+    border-radius: 10px !important;
+    border: 1px solid var(--wangp-border) !important;
+    flex-grow: 1;
+    margin-bottom: 0 !important;
+}
+
+.rule-card p {
+    margin-bottom: 0 !important;
+    color: var(--wangp-text-primary) !important;
+}
+
+.delete-btn {
+    min-width: calc(42px * var(--wangp-ui-scale)) !important;
+    max-width: calc(42px * var(--wangp-ui-scale)) !important;
+    height: calc(42px * var(--wangp-ui-scale)) !important;
+    padding: 0 !important;
+    align-self: center;
+    background: var(--wangp-bg-elevated) !important;
+    border: 1px solid var(--wangp-border) !important;
+    color: var(--wangp-error) !important;
+}
+
+.delete-btn:hover {
+    background: rgba(239, 68, 68, 0.15) !important;
+    border-color: var(--wangp-error) !important;
+}
+
+#refiner-input-row {
+    align-items: center;
+}
+
+/* ================================================================
+   Edit Tab Content
+   ================================================================ */
+
+#edit-tab-content {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ================================================================
+   Postprocess Elements
+   ================================================================ */
+
+.postprocess div,
+.postprocess span,
+.postprocess label,
+.postprocess input,
+.postprocess select,
+.postprocess textarea {
+    font-size: calc(12px * var(--wangp-ui-scale)) !important;
+    padding: 0px !important;
+    border: 5px !important;
+    border-radius: 0px !important;
+    --form-gap-width: 0px !important;
+    box-shadow: none !important;
+    --layout-gap: 0px !important;
+}
+
+.postprocess span {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+/* ================================================================
+   Copy/Swap Text Elements
+   ================================================================ */
+
+.copy-swap {
+    display: block;
+    max-width: 100%;
+}
+
 .copy-swap__trunc {
-display: block;
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--wangp-text-secondary) !important;
 }
-.copy-swap__full { display: none; }
+
+.copy-swap__full {
+    display: none;
+}
+
 .copy-swap:hover .copy-swap__trunc,
-.copy-swap:focus-within .copy-swap__trunc { display: none; }
+.copy-swap:focus-within .copy-swap__trunc {
+    display: none;
+}
+
 .copy-swap:hover .copy-swap__full,
 .copy-swap:focus-within .copy-swap__full {
-display: inline;
-white-space: normal;
-user-select: text;
+    display: inline;
+    white-space: normal;
+    user-select: text;
+    color: var(--wangp-text-primary) !important;
 }
-.compact_text {padding: calc(1px * var(--wangp-ui-scale))}
-#video_input .video-container .container {
-    flex-direction: row !important;
-    display: flex !important;
+
+.compact_text {
+    padding: calc(1px * var(--wangp-ui-scale));
 }
-#video_input .video-container .container .controls {
-    overflow: visible !important;
+
+div.compact_tab,
+span.compact_tab {
+    padding: 0px !important;
 }
-.tabitem {padding-top:0px}
-.rule-row { margin-bottom: calc(8px * var(--wangp-ui-scale)); align-items: center !important; display: flex; gap: calc(8px * var(--wangp-ui-scale)); }
-.rule-card { background-color: var(--background-fill-secondary); padding: calc(8px * var(--wangp-ui-scale)) calc(12px * var(--wangp-ui-scale)); border-radius: calc(6px * var(--wangp-ui-scale)); border: 1px solid var(--border-color-primary); flex-grow: 1; margin-bottom: 0 !important; }
-.rule-card p { margin-bottom: 0 !important; }
-.delete-btn { 
-	min-width: calc(42px * var(--wangp-ui-scale)) !important; 
-	max-width: calc(42px * var(--wangp-ui-scale)) !important; 
-	height: calc(42px * var(--wangp-ui-scale)) !important; 
-	padding: 0 !important; 
-	align-self: center;
-}
-#refiner-input-row { align-items: center; }
+
+/* ================================================================
+   Header Markdown Group
+   ================================================================ */
 
 .header-markdown-group,
 .header-markdown-group > div {
@@ -390,10 +987,198 @@ user-select: text;
     border: none !important;
     box-shadow: none !important;
 }
+
 .header-markdown-group {
     padding: 0 !important;
 }
+
 .header-markdown-group .prose {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
+}
+
+/* ================================================================
+   Gallery
+   ================================================================ */
+
+.gr-gallery {
+    background: var(--wangp-bg-secondary) !important;
+    border: 1px solid var(--wangp-border) !important;
+    border-radius: 12px !important;
+    padding: 12px !important;
+}
+
+.gr-gallery-item {
+    background: var(--wangp-bg-card) !important;
+    border: 1px solid var(--wangp-border) !important;
+    border-radius: 8px !important;
+    overflow: hidden;
+    transition: all 0.2s ease !important;
+}
+
+.gr-gallery-item:hover {
+    border-color: var(--wangp-accent) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: var(--wangp-shadow-md), 0 0 15px var(--wangp-accent-glow) !important;
+}
+
+/* ================================================================
+   Scrollbars
+   ================================================================ */
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--wangp-bg-secondary);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--wangp-bg-elevated);
+    border-radius: 5px;
+    border: 2px solid var(--wangp-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--wangp-accent);
+}
+
+/* ================================================================
+   Status/Info Messages
+   ================================================================ */
+
+.gr-info, .info {
+    background: rgba(59, 130, 246, 0.15) !important;
+    border: 1px solid rgba(59, 130, 246, 0.3) !important;
+    color: #60a5fa !important;
+    border-radius: 8px !important;
+    padding: 12px 16px !important;
+}
+
+.gr-warning, .warning {
+    background: rgba(245, 158, 11, 0.15) !important;
+    border: 1px solid rgba(245, 158, 11, 0.3) !important;
+    color: #fbbf24 !important;
+    border-radius: 8px !important;
+    padding: 12px 16px !important;
+}
+
+.gr-error, .error {
+    background: rgba(239, 68, 68, 0.15) !important;
+    border: 1px solid rgba(239, 68, 68, 0.3) !important;
+    color: #f87171 !important;
+    border-radius: 8px !important;
+    padding: 12px 16px !important;
+}
+
+.gr-success, .success {
+    background: rgba(16, 185, 129, 0.15) !important;
+    border: 1px solid rgba(16, 185, 129, 0.3) !important;
+    color: #34d399 !important;
+    border-radius: 8px !important;
+    padding: 12px 16px !important;
+}
+
+/* ================================================================
+   Markdown Content
+   ================================================================ */
+
+.prose {
+    color: var(--wangp-text-primary) !important;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4 {
+    color: var(--wangp-text-primary) !important;
+}
+
+.prose p {
+    color: var(--wangp-text-secondary) !important;
+}
+
+.prose a {
+    color: var(--wangp-accent) !important;
+}
+
+.prose a:hover {
+    color: var(--wangp-accent-hover) !important;
+}
+
+.prose code {
+    background: var(--wangp-bg-secondary) !important;
+    border: 1px solid var(--wangp-border) !important;
+    border-radius: 4px !important;
+    padding: 2px 6px !important;
+    color: var(--wangp-accent) !important;
+}
+
+.prose pre {
+    background: var(--wangp-bg-secondary) !important;
+    border: 1px solid var(--wangp-border) !important;
+    border-radius: 8px !important;
+}
+
+/* ================================================================
+   Loading States
+   ================================================================ */
+
+.gr-loading {
+    background: var(--wangp-bg-card) !important;
+}
+
+.gr-loading::after {
+    border-color: var(--wangp-accent) transparent transparent transparent !important;
+}
+
+/* Loading spinner animation */
+@keyframes wangp-pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+.loading-indicator {
+    animation: wangp-pulse 1.5s ease-in-out infinite;
+}
+
+/* ================================================================
+   Responsive Adjustments
+   ================================================================ */
+
+@media (max-width: 768px) {
+    :root {
+        --wangp-ui-scale: 0.85;
+    }
+    
+    .tab-nav {
+        flex-wrap: wrap !important;
+    }
+    
+    .tab-nav button {
+        padding: 8px 12px !important;
+        font-size: 12px !important;
+    }
+}
+
+/* ================================================================
+   Animation Utilities
+   ================================================================ */
+
+@keyframes wangp-glow {
+    0%, 100% { box-shadow: 0 0 15px var(--wangp-accent-glow); }
+    50% { box-shadow: 0 0 25px var(--wangp-accent-glow), 0 0 35px var(--wangp-secondary-subtle); }
+}
+
+.glow-animation {
+    animation: wangp-glow 2s ease-in-out infinite;
+}
+
+@keyframes wangp-fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: wangp-fade-in 0.3s ease-out;
 }

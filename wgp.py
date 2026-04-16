@@ -11573,7 +11573,59 @@ def create_ui():
     if UI_theme == "gradio":
         theme = None
     else:
-        theme = gr.themes.Soft(font=["Verdana"], primary_hue="sky", neutral_hue="slate", spacing_size=theme_spacing_size, radius_size=theme_radius_size, text_size=theme_text_size)
+        # Modern dark theme with cyan accent
+        theme = gr.themes.Base(
+            font=["Inter", "system-ui", "Verdana", "sans-serif"],
+            primary_hue=gr.themes.colors.cyan,
+            secondary_hue=gr.themes.colors.violet,
+            neutral_hue=gr.themes.colors.slate,
+            spacing_size=theme_spacing_size,
+            radius_size=theme_radius_size,
+            text_size=theme_text_size
+        ).set(
+            body_background_fill="#0a0f14",
+            body_background_fill_dark="#0a0f14",
+            background_fill_primary="#0f1419",
+            background_fill_primary_dark="#0f1419",
+            background_fill_secondary="#141b22",
+            background_fill_secondary_dark="#141b22",
+            block_background_fill="#1a232d",
+            block_background_fill_dark="#1a232d",
+            block_border_color="rgba(148, 163, 184, 0.12)",
+            block_border_color_dark="rgba(148, 163, 184, 0.12)",
+            block_label_background_fill="#1f2937",
+            block_label_background_fill_dark="#1f2937",
+            block_label_text_color="#94a3b8",
+            block_label_text_color_dark="#94a3b8",
+            block_title_text_color="#f1f5f9",
+            block_title_text_color_dark="#f1f5f9",
+            body_text_color="#f1f5f9",
+            body_text_color_dark="#f1f5f9",
+            body_text_color_subdued="#94a3b8",
+            body_text_color_subdued_dark="#94a3b8",
+            button_primary_background_fill="linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)",
+            button_primary_background_fill_dark="linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)",
+            button_primary_background_fill_hover="linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%)",
+            button_primary_background_fill_hover_dark="linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%)",
+            button_primary_text_color="#0a0f14",
+            button_primary_text_color_dark="#0a0f14",
+            button_secondary_background_fill="#1f2937",
+            button_secondary_background_fill_dark="#1f2937",
+            button_secondary_text_color="#f1f5f9",
+            button_secondary_text_color_dark="#f1f5f9",
+            input_background_fill="#0f1419",
+            input_background_fill_dark="#0f1419",
+            input_border_color="rgba(148, 163, 184, 0.12)",
+            input_border_color_dark="rgba(148, 163, 184, 0.12)",
+            input_border_color_focus="#06b6d4",
+            input_border_color_focus_dark="#06b6d4",
+            checkbox_background_color="#0f1419",
+            checkbox_background_color_dark="#0f1419",
+            checkbox_background_color_selected="#06b6d4",
+            checkbox_background_color_selected_dark="#06b6d4",
+            slider_color="#06b6d4",
+            slider_color_dark="#06b6d4",
+        )
 
     # Load main JS from external file
     js_path = os.path.join(os.path.dirname(__file__), "shared", "gradio", "ui_scripts.js")
